@@ -1,4 +1,4 @@
 package org.example.springboot;
 
-public record Student() {
+public record Student(int id, String firstName, String lastName, String email, String course) {
 }
