@@ -25,22 +25,17 @@ public class StudentController {
                         "kg",
                         "Molife",
                         "kgmorelife@gmail.com", "Python")
-
-
+                
         );
 
     }
 
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable int id) {
-
-        return new Student(
-                id,
-                "Kagiso",
-                "Molefe",
-                "kagiso@gmail.com",
-                "Java");
-
-
-}
-}
+            return getStudent().stream()
+                    .filter(student -> student.id() == id)
+                    .findFirst()
+                    .orElseThrow(() ->
+                            new RuntimeException("Student not found"));
+        }
+    }
